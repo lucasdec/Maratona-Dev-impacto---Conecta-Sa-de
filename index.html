@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conecta Saúde - PSF Centro</title>
+  
+  <!-- Fonte Google Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Phosphor Icons Script -->
+  <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
+
+  <!-- Arquivo CSS Externo -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app-viewport">
+
+    <!-- ==========================================================================
+       TELA 1: LOGIN UNIFICADO (Paciente, Médico, Admin)
+       ========================================================================== -->
+    <section id="view-login" class="screen-view active">
+      <div class="login-container">
+        <header class="brand-header">
+          <div class="brand-icon-box">
+            <i class="ph-fill ph-heart"></i>
+          </div>
+          <h1 class="brand-title">Conecta <span>Saúde</span></h1>
+          <p class="brand-subtitle">Sua saúde conectada, sempre ao seu lado</p>
+        </header>
+
+        <main class="login-card">
+          <!-- Abas de seleção de perfil -->
+          <nav class="login-tabs">
+            <button type="button" class="login-tab-btn active" id="tab-paciente">
+              <i class="ph ph-user"></i> Paciente
+            </button>
+            <button type="button" class="login-tab-btn" id="tab-medico">
+              <i class="ph ph-stethoscope"></i> Médico(a)
+            </button>
+            <button type="button" class="login-tab-btn" id="tab-admin">
+              <i class="ph ph-shield-check"></i> Admin
+            </button>
+          </nav>
+
+          <form class="login-body" id="form-login">
+            <div class="form-group">
+              <label for="login-identifier" id="lbl-login-input">CPF, E-mail ou Cartão SUS</label>
+              <input type="text" id="login-identifier" class="form-control" placeholder="Ex: 123.456.789-00" required>
+            </div>
+
+            <div class="form-group">
+              <label for="login-password">Senha</label>
+              <div class="input-wrapper">
+                <input type="password" id="login-password" class="form-control" placeholder="Digite sua senha" required>
+                <button type="button" class="toggle-password-btn" id="btn-toggle-pwd" aria-label="Mostrar/Ocultar senha">
+                  <i class="ph ph-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-submit">Entrar</button>
+
+            <div class="divider">
+              <span>ou</span>
+            </div>
+
+            <button type="button" class="btn-outline" id="btn-biometria">
+              <i class="ph ph-fingerprint"></i> Acesso Rápido por Biometria
+            </button>
+
+            <footer class="login-footer-links">
+              <a href="#" id="link-forgot-password">Esqueci minha senha</a>
+              <p>Ainda não tem cadastro?</p>
+              <button type="button" class="btn-outline btn-create-account" id="btn-criar-conta">Criar minha conta</button>
+            </footer>
+          </form>
+        </main>
+
+        <footer class="footer-psf-info">
+          <p>PSF Centro • Av. Brasil, 1200 • (84) 3215-5678</p>
+        </footer>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       TELA 2: DASHBOARD DO PACIENTE
+       ========================================================================== -->
+    <section id="view-home-paciente" class="screen-view">
+      <header class="app-header">
+        <div class="header-top-row">
+          <div class="user-welcome">
+            <p class="welcome-text">Bem-vinda de volta,</p>
+            <h2 class="user-name-title">Maria das Graças!</h2>
+          </div>
+          <div class="header-actions">
+            <button type="button" class="icon-btn-rounded nav-perfil" aria-label="Meu Perfil">
+              <i class="ph ph-user"></i>
+            </button>
+            <button type="button" class="icon-btn-rounded nav-logout" aria-label="Sair da conta">
+              <i class="ph ph-sign-out"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="tag-badge">
+          <i class="ph-fill ph-circle"></i> Conecta Saúde
+        </div>
+
+        <!-- Banner de Campanha -->
+        <article class="banner-campanha">
+          <div class="banner-content">
+            <span class="banner-tag">Aviso do Posto</span>
+            <h4 class="banner-title">Campanha de Vacinação contra Gripe</h4>
+            <p class="banner-desc">Proteja-se! Vacine-se até o dia 30 de junho. Sem agendamento.</p>
+            <button type="button" class="banner-btn">Saiba mais</button>
+          </div>
+          <i class="ph ph-syringe banner-icon"></i>
+        </article>
+      </header>
+
+      <main class="main-body">
+        <h3 class="section-title">O que você precisa?</h3>
+
+        <!-- Grid de Atalhos -->
+        <nav class="shortcut-grid">
+          <article class="shortcut-card nav-agendar" id="btn-shortcut-agendar">
+            <div class="shortcut-icon icon-blue">
+              <i class="ph ph-calendar-blank"></i>
+            </div>
+            <p>Agendar Consulta</p>
+          </article>
+
+          <article class="shortcut-card" id="btn-shortcut-vacinacao">
+            <div class="shortcut-icon icon-green">
+              <i class="ph ph-syringe"></i>
+            </div>
+            <p>Vacinação</p>
+          </article>
+
+          <article class="shortcut-card" id="btn-shortcut-historico">
+            <div class="shortcut-icon icon-purple">
+              <i class="ph ph-clock-counter-clockwise"></i>
+            </div>
+            <p>Meu Histórico</p>
+          </article>
+
+          <article class="shortcut-card" id="btn-shortcut-exames">
+            <div class="shortcut-icon icon-orange">
+              <i class="ph ph-flask"></i>
+            </div>
+            <p>Exames</p>
+          </article>
+        </nav>
+
+        <!-- Próxima Consulta -->
+        <header class="section-header">
+          <h4 class="section-title">Próxima Consulta</h4>
+          <a href="#" class="see-all-link nav-agendar">Agendar</a>
+        </header>
+
+        <article class="info-list-card card-highlight">
+          <div class="info-list-left">
+            <div class="icon-avatar-box box-blue">
+              <i class="ph ph-calendar-blank"></i>
+            </div>
+            <div class="info-details">
+              <h5>Dr. João Silva — Clínico Geral</h5>
+              <p class="date-highlight">Seg, 15 jul • 14:00h</p>
+              <p class="sub-detail">PSF Centro</p>
+            </div>
+          </div>
+          <i class="ph ph-caret-right"></i>
+        </article>
+
+        <!-- Histórico Recente -->
+        <header class="section-header">
+          <h4 class="section-title">Histórico Recente</h4>
+          <a href="#" class="see-all-link" id="link-ver-historico">Ver tudo</a>
+        </header>
+
+        <article class="info-list-card">
+          <div class="info-list-left">
+            <div class="icon-avatar-box box-green">
+              <i class="ph ph-syringe"></i>
+            </div>
+            <div class="info-details">
+              <h5>Vacina COVID-19 — 3ª dose</h5>
+              <p class="sub-detail">2 dias atrás</p>
+            </div>
+          </div>
+          <i class="ph ph-caret-right"></i>
+        </article>
+
+        <article class="info-list-card">
+          <div class="info-list-left">
+            <div class="icon-avatar-box box-purple">
+              <i class="ph ph-flask"></i>
+            </div>
+            <div class="info-details">
+              <h5>Hemograma completo — Pronto</h5>
+              <p class="sub-detail">5 dias atrás</p>
+            </div>
+          </div>
+          <i class="ph ph-caret-right"></i>
+        </article>
+      </main>
+
+      <!-- Botão Flutuante do Chatbot -->
+      <button type="button" class="floating-chat-btn" id="btn-chatbot" aria-label="Abrir Assistente Virtual">
+        <i class="ph-fill ph-chat-circle-dots"></i>
+      </button>
+    </section>
+
+    <!-- ==========================================================================
+       TELA 3: MEU PERFIL (EDIÇÃO DE DADOS DO PACIENTE)
+       ========================================================================== -->
+    <section id="view-perfil-paciente" class="screen-view">
+      <header class="app-header header-navigation">
+        <button type="button" class="icon-btn-rounded nav-voltar-home" aria-label="Voltar">
+          <i class="ph ph-arrow-left"></i>
+        </button>
+        <h3>Meu Perfil</h3>
+        <button type="button" class="icon-btn-rounded nav-logout" aria-label="Sair da conta">
+          <i class="ph ph-sign-out"></i>
+        </button>
+      </header>
+
+      <main class="main-body">
+        <section class="profile-avatar-area">
+          <div class="profile-avatar-wrapper">
+            <div class="avatar-circle">
+              <i class="ph ph-user"></i>
+            </div>
+            <span class="avatar-cam-badge"><i class="ph ph-camera"></i></span>
+          </div>
+          <h3>Maria das Graças Silva</h3>
+          <p class="user-cpf">CPF: 123.456.789-00</p>
+
+          <div class="avatar-actions">
+            <button type="button" class="btn-outline-sm" id="btn-tirar-foto">
+              <i class="ph ph-camera"></i> Tirar Foto
+            </button>
+            <button type="button" class="btn-outline-sm" id="btn-upload-galeria">
+              <i class="ph ph-upload-simple"></i> Da Galeria
+            </button>
+          </div>
+        </section>
+
+        <section class="read-only-box">
+          <h4 class="box-subtitle">INFORMAÇÕES DO CADASTRO (NÃO EDITÁVEL)</h4>
+          <dl class="read-only-list">
+            <div class="read-only-row">
+              <dt>Data de Nascimento</dt>
+              <dd>15/03/1958</dd>
+            </div>
+            <div class="read-only-row">
+              <dt>Cartão SUS</dt>
+              <dd>123 4567 8901 2345</dd>
+            </div>
+            <div class="read-only-row">
+              <dt>Nome da Mãe</dt>
+              <dd>Josefa Maria da Silva</dd>
+            </div>
+          </dl>
+        </section>
+
+        <form class="address-form" id="form-endereco">
+          <h4 class="section-title">Endereço Residencial</h4>
+
+          <div class="form-group">
+            <label for="cep">CEP</label>
+            <input type="text" id="cep" class="form-control" value="59000-000">
+          </div>
+
+          <div class="form-group">
+            <label for="street">Rua / Avenida</label>
+            <input type="text" id="street" class="form-control" value="Rua das Flores">
+          </div>
+
+          <div class="form-row-2col">
+            <div class="form-group">
+              <label for="number">Número</label>
+              <input type="text" id="number" class="form-control" value="123">
+            </div>
+            <div class="form-group">
+              <label for="complement">Complemento</label>
+              <input type="text" id="complement" class="form-control" value="Apto 2">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="neighborhood">Bairro</label>
+            <input type="text" id="neighborhood" class="form-control" value="Centro">
+          </div>
+
+          <div class="form-row-2col-state">
+            <div class="form-group">
+              <label for="city">Cidade</label>
+              <input type="text" id="city" class="form-control" value="Natal">
+            </div>
+            <div class="form-group">
+              <label for="state">Estado</label>
+              <input type="text" id="state" class="form-control" value="RN">
+            </div>
+          </div>
+
+          <button type="submit" class="btn-submit">
+            <i class="ph ph-check"></i> Salvar Alterações
+          </button>
+        </form>
+      </main>
+    </section>
+
+    <!-- ==========================================================================
+       TELA 4: AGENDAR CONSULTA (LISTA DE MÉDICOS)
+       ========================================================================== -->
+    <section id="view-agendar-consulta" class="screen-view">
+      <header class="app-header header-navigation">
+        <button type="button" class="icon-btn-rounded nav-voltar-home" aria-label="Voltar">
+          <i class="ph ph-arrow-left"></i>
+        </button>
+        <h3>Agendar Consulta</h3>
+      </header>
+
+      <main class="main-body">
+        <h4 class="section-title">Escolha o Profissional</h4>
+
+        <article class="info-list-card clickable doctor-card">
+          <div class="info-list-left">
+            <div class="icon-avatar-box avatar-doc">🧑‍⚕️</div>
+            <div class="info-details">
+              <h5>Dr. João Silva</h5>
+              <p class="sub-detail">Clínico Geral</p>
+              <p class="action-link"><i class="ph ph-calendar"></i> Ver agenda</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="info-list-card clickable doctor-card">
+          <div class="info-list-left">
+            <div class="icon-avatar-box avatar-doc">👩‍⚕️</div>
+            <div class="info-details">
+              <h5>Dra. Maria Santos</h5>
+              <p class="sub-detail">Pediatra</p>
+              <p class="action-link"><i class="ph ph-calendar"></i> Ver agenda</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="info-list-card clickable doctor-card">
+          <div class="info-list-left">
+            <div class="icon-avatar-box avatar-doc">👨‍⚕️</div>
+            <div class="info-details">
+              <h5>Dr. Pedro Costa</h5>
+              <p class="sub-detail">Cardiologista</p>
+              <p class="action-link"><i class="ph ph-calendar"></i> Ver agenda</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="info-list-card clickable doctor-card">
+          <div class="info-list-left">
+            <div class="icon-avatar-box avatar-doc">👩‍⚕️</div>
+            <div class="info-details">
+              <h5>Dra. Ana Oliveira</h5>
+              <p class="sub-detail">Ginecologista</p>
+              <p class="action-link"><i class="ph ph-calendar"></i> Ver agenda</p>
+            </div>
+          </div>
+        </article>
+      </main>
+    </section>
+
+    <!-- ==========================================================================
+       TELA 5: PAINEL DO MÉDICO
+       ========================================================================== -->
+    <section id="view-home-medico" class="screen-view">
+      <header class="app-header">
+        <div class="header-top-row">
+          <div class="user-profile-header">
+            <div class="icon-btn-rounded">
+              <i class="ph ph-stethoscope"></i>
+            </div>
+            <div>
+              <p class="welcome-text">Bem-vindo(a),</p>
+              <h2 class="user-name-title">Dr. João Silva</h2>
+              <p class="user-subtitle">Clínico Geral • CRM 12345</p>
+            </div>
+          </div>
+          <button type="button" class="icon-btn-rounded nav-logout" aria-label="Sair da conta">
+            <i class="ph ph-sign-out"></i>
+          </button>
+        </div>
+
+        <div class="tag-badge">
+          <i class="ph ph-calendar"></i> Domingo, 28 de Junho de 2026
+        </div>
+      </header>
+
+      <main class="main-body">
+        <h4 class="section-title">Resumo do Dia</h4>
+
+        <section class="metrics-row">
+          <article class="metric-card metric-blue">
+            <p class="metric-value">4</p>
+            <p class="metric-label">Aguardando</p>
+          </article>
+
+          <article class="metric-card metric-green">
+            <p class="metric-value">2</p>
+            <p class="metric-label">Atendidos</p>
+          </article>
+
+          <article class="metric-card metric-red">
+            <p class="metric-value">0</p>
+            <p class="metric-label">Faltas</p>
+          </article>
+
+          <article class="metric-card metric-neutral">
+            <p class="metric-value">6</p>
+            <p class="metric-label">Total</p>
+          </article>
+        </section>
+
+        <header class="section-header">
+          <h4 class="section-title">Agenda de Hoje</h4>
+          <span class="count-badge">6 pacientes</span>
+        </header>
+
+        <!-- Paciente 1 (Atendido) -->
+        <article class="info-list-card card-disabled">
+          <div class="info-list-left">
+            <div class="icon-avatar-box">
+              <i class="ph ph-clock"></i>
+            </div>
+            <div class="info-details">
+              <span class="time-slot">08:00</span>
+              <h5 class="line-through">Maria da Silva</h5>
+              <p class="sub-detail">Consulta de rotina • 68 anos</p>
+              <span class="status-attended">✓ Atendido</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Paciente 2 (Atendido) -->
+        <article class="info-list-card card-disabled">
+          <div class="info-list-left">
+            <div class="icon-avatar-box">
+              <i class="ph ph-clock"></i>
+            </div>
+            <div class="info-details">
+              <span class="time-slot">09:00</span>
+              <h5 class="line-through">João Santos</h5>
+              <p class="sub-detail">Retorno • 45 anos</p>
+              <span class="status-attended">✓ Atendido</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Paciente 3 (Aguardando / Ativo) -->
+        <article class="info-list-card card-active-patient">
+          <div class="patient-header">
+            <div class="info-list-left">
+              <div class="icon-avatar-box box-blue">
+                <i class="ph ph-clock"></i>
+              </div>
+              <div class="info-details">
+                <span class="time-slot-active">10:00</span>
+                <h5>Ana Paula Costa</h5>
+                <p class="sub-detail">Primeira consulta • 34 anos</p>
+                <span class="status-waiting">👤 Aguardando</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="patient-actions">
+            <button type="button" class="btn-start-consult" id="btn-iniciar-atendimento">
+              ► Iniciar Atendimento
+            </button>
+            <button type="button" class="btn-mark-absence" id="btn-registrar-falta">
+              ✖ Falta
+            </button>
+          </div>
+        </article>
+      </main>
+    </section>
+
+    <!-- ==========================================================================
+       TELA 6: PAINEL DO ADMINISTRADOR
+       ========================================================================== -->
+    <section id="view-home-admin" class="screen-view">
+      <header class="app-header">
+        <div class="header-top-row">
+          <div class="user-profile-header">
+            <div class="icon-btn-rounded">
+              <i class="ph ph-shield-check"></i>
+            </div>
+            <div>
+              <p class="welcome-text">Bem-vindo(a),</p>
+              <h2 class="user-name-title">Painel do Administrador</h2>
+              <p class="user-subtitle">PSF Centro</p>
+            </div>
+          </div>
+          <button type="button" class="icon-btn-rounded nav-logout" aria-label="Sair da conta">
+            <i class="ph ph-sign-out"></i>
+          </button>
+        </div>
+
+        <section class="metrics-row metrics-row-header">
+          <article class="metric-card-translucent">
+            <p class="metric-value">8</p>
+            <p class="metric-label">Médicos</p>
+          </article>
+
+          <article class="metric-card-translucent">
+            <p class="metric-value">12</p>
+            <p class="metric-label">Agentes</p>
+          </article>
+
+          <article class="metric-card-translucent">
+            <p class="metric-value">1.247</p>
+            <p class="metric-label">Pacientes</p>
+          </article>
+
+          <article class="metric-card-translucent">
+            <p class="metric-value">32</p>
+            <p class="metric-label">Consultas Hoje</p>
+          </article>
+        </section>
+      </header>
+
+      <main class="main-body">
+        <h4 class="section-title">Cadastros</h4>
+
+        <article class="info-list-card clickable admin-action-card">
+          <div class="info-list-left">
+            <div class="icon-avatar-box box-blue">
+              <i class="ph ph-stethoscope"></i>
+            </div>
+            <h5>Cadastrar Médico</h5>
+          </div>
+          <i class="ph ph-caret-right"></i>
+        </article>
+
+        <article class="info-list-card clickable admin-action-card">
+          <div class="info-list-left">
+            <div class="icon-avatar-box box-green">
+              <i class="ph ph-clipboard-text"></i>
+            </div>
+            <h5>Cadastrar Agente de Saúde</h5>
+          </div>
+          <i class="ph ph-caret-right"></i>
+        </article>
+
+        <article class="info-list-card clickable admin-action-card">
+          <div class="info-list-left">
+            <div class="icon-avatar-box box-purple">
+              <i class="ph ph-address-book"></i>
+            </div>
+            <h5>Agenda de Contatos</h5>
+          </div>
+          <i class="ph ph-caret-right"></i>
+        </article>
+
+        <h4 class="section-title">Gestão Operacional</h4>
+
+        <article class="info-list-card clickable admin-action-card">
+          <div class="info-list-left">
+            <div class="icon-avatar-box box-blue">
+              <i class="ph ph-calendar-blank"></i>
+            </div>
+            <h5>Escala Médica</h5>
+          </div>
+          <i class="ph ph-caret-right"></i>
+        </article>
+      </main>
+    </section>
+
+  </div>
+
+  <!-- Arquivo JavaScript Externo -->
+  <script src="script.js"></script>
+</body>
+</html>
